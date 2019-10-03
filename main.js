@@ -3,12 +3,22 @@
 
 // ここに「ブロックスコープ」の説明を記述する
 
+/*
+const・letで変数宣言する。
+ifやforの{}で囲われた範囲をブロックと呼び、ブロックの中に定義された変数は外からアクセスできない。
+ブロックの中から外の変数はアクセスできる。
+ */
 
 // 課題2: 「コメント」を使って変数の関数スコープの説明をしてください
 //   - コメントとは: https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#%E3%82%B3%E3%83%A1%E3%83%B3%E3%83%88
 
 // ここに「関数スコープ」の説明を記述する
 
+/*
+varで変数宣言する。
+ifやforのブロック内で定義された変数に外からアクセスできる。
+関数の引数や関数内で定義された変数には外からアクセスできない。
+*/
 
 // 課題3: 以下の条件を満たす高階関数を実装してください
 //   - 関数名: kadai_3
@@ -26,6 +36,35 @@
 //           - 第1引数で受けとった `message` の内容を `alert` を使ってアラートダイアログに表示する
 //   - kadai_3関数を実装した直後に「kadai_3(数値, コールバック関数)」を呼び出して、アラートダイアログのメッセージ内容が意図通りであることを確認する
 
+const kadai_3 = (age, callback) => {
+    if (typeof age !== 'number') {
+        message = '数値が入力されていません';
+        callback(message);
+    } else if (age >= 20) {
+        message = '値は20以上です';
+        callback(message);
+    } else if (age >= 10 && age < 20) {
+        message = '値は10以上20未満です';
+        callback(message);
+    } else {
+        message = '値は10未満です';
+        callback(message);
+    }
+};
+
+// 第1引数がage 第2引数がcallback
+kadai_3(20, function(message) {
+    alert(message);
+});
+kadai_3(10, function(message) {
+    alert(message);
+});
+kadai_3(1, function(message) {
+    alert(message);
+});
+kadai_3('str', function (message) {
+    alert(message);
+});
 
 // 課題4: 以下の条件を満たす即時関数を作る
 //   - 2つの引数を受け取る
@@ -33,3 +72,7 @@
 //     - 第2引数: y => 数値
 //   - 処理内容:
 //     - 第1引数のx, 第2引数のyを使って足し算した結果(「x + y」の結果)をconsole.logで出力する。
+
+((x, y) => {
+    console.log('課題4の結果', x + y);
+})(1, 2);
