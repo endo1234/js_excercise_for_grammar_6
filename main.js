@@ -39,17 +39,14 @@ ifやforのブロック内で定義された変数に外からアクセスでき
 const kadai_3 = (age, callback) => {
     if (typeof age !== 'number') {
         message = '数値が入力されていません';
-        callback(message);
     } else if (age >= 20) {
         message = '値は20以上です';
-        callback(message);
     } else if (age >= 10 && age < 20) {
         message = '値は10以上20未満です';
-        callback(message);
     } else {
         message = '値は10未満です';
-        callback(message);
     }
+    callback(message);
 };
 
 // 第1引数がage 第2引数がcallback
